@@ -10,8 +10,14 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception{
+        Parser parser = new Parser();
         String output = (new Main()).readRawDataToString();
-        System.out.println(output);
+        String[] outputArray = output.split("##");
+        parser.arrayToString(outputArray);
 
+        for (String items : outputArray){
+            String[] singleArray = items.split("[^A-Za-z0-9.:/]");
+            parser.arrayToString(singleArray);
+        }
     }
 }
